@@ -10,8 +10,9 @@ HRESULT TooltipHandler::GetInfoFlags(DWORD* pdwFlags)
 HRESULT TooltipHandler::GetInfoTip(DWORD dwFlags, PWSTR* ppwszTip)
 {
 	std::wstring tooltipText(L"This is my custom addon!");
-	PWSTR* stringPointer = (PWSTR*)CoTaskMemAlloc(tooltipText.length() + 1);
-	wcscpy((WCHAR*)stringPointer, tooltipText.c_str());
+	std::size_t length = tooltipText.length() + 1;
+	PWSTR* stringPointer = (PWSTR*)CoTaskMemAlloc(length);
+	wcscpy_s((WCHAR*)stringPointer, length, tooltipText.c_str());
 	ppwszTip = stringPointer;
 	return S_OK;
 }

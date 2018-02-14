@@ -1,0 +1,5 @@
+LIBRARY ShellExtensionInfoTip
+EXPORTS
+		DllMain
+		DllGetClassObject
+		DllCanUnloadNow
